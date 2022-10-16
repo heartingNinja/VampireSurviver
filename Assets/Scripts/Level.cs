@@ -1,0 +1,48 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Level : MonoBehaviour
+{
+    int level = 1;
+    int experience = 0;
+    [SerializeField] ExperienceBar experienceBar;
+    [SerializeField] UpgradePanelManager upgradePanelManager;
+
+
+    private void Start()
+    {
+        experienceBar.UpdateExerienceSlider(experience, TO_LEVEL_UP);
+        experienceBar.SetLevelText(level);
+    }
+    int TO_LEVEL_UP
+    {
+        get
+        {
+            return level * 1000;
+        }
+    }
+
+    public void AddExperience(int amount)
+    {
+        experience += amount;
+        CheckLevelUp();
+        experienceBar.UpdateExerienceSlider(experience, TO_LEVEL_UP);
+    }
+
+    public void CheckLevelUp()
+    {
+        if(experience >= TO_LEVEL_UP)
+        {
+            LevelUp();
+        }
+    }
+
+    private void LevelUp()
+    {
+        upgradePanelManager.OpenPanel();
+        experience -= TO_LEVEL_UP;
+        level += 1;
+        experienceBar.SetLevelText(level);
+    }
+}
