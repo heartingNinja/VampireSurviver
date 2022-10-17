@@ -44,5 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f6c2289d419bc4f87f8fd5400ebcf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToAttack: 1.5
+  weaponData: {fileID: 0}
+  weaponStats:
+    damage: 0
+    timeToAttack: 0
+    numberOfAttacks: 0
   spearPrefab: {fileID: 7861310629089002335, guid: 19c70427cefc39c40a98dcd37c6bfcb6, type: 3}
+  spread: 0.5

@@ -37,9 +37,6 @@ public class PlayerMove : MonoBehaviour
     {
         movementVector = value.Get<Vector2>();
        
-
-
-
     }
 
     private void FixedUpdate()
@@ -53,6 +50,7 @@ public class PlayerMove : MonoBehaviour
             animate.horizontal = movementVector.x;
             animate.vertical = movementVector.y;
         // }
+       
 
         if(movementVector.x != 0)
         {

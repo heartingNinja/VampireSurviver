@@ -8,6 +8,7 @@ public class Animate : MonoBehaviour
 
     public float horizontal;
     public float vertical;
+   
 
     private void Awake()
     {
@@ -19,5 +20,15 @@ public class Animate : MonoBehaviour
     void Update()
     {
         animator.SetFloat("Horizontal", horizontal);
+        animator.SetFloat("Vertical", vertical);
+
+        if(horizontal != 0)
+        {
+            animator.SetBool("MovingHorizontal", true);
+        }
+        else
+        {
+            animator.SetBool("MovingHorizontal", false);
+        }
     }
 }

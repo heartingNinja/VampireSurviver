@@ -6,10 +6,11 @@ public class ThrowingSpearProjectile : MonoBehaviour
 {
     Vector3 direction;
     [SerializeField] float speed;
-    [SerializeField] int damage = 5;
+    public int damage = 5;
 
     [SerializeField] float hitSize = .7f;
 
+    float ttl = 6f;
     bool hitDetected = false;
 
     public void SetDirection(float dir_x, float dir_y)
@@ -49,6 +50,12 @@ public class ThrowingSpearProjectile : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+
+        ttl -= Time.deltaTime;
+        if(ttl < 0)
+        {
+            Destroy(gameObject);
         }
         
     }

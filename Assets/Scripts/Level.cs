@@ -9,12 +9,28 @@ public class Level : MonoBehaviour
     [SerializeField] ExperienceBar experienceBar;
     [SerializeField] UpgradePanelManager upgradePanelManager;
 
+    [SerializeField] List<UpgradeData> upgrades;
+    List<UpgradeData> selectedUpgrades;
 
+    [SerializeField] List<UpgradeData> acquiredUpgrades;
+
+    WeaponManager weaponManager;
+
+    private void Awake()
+    {
+        weaponManager = GetComponent<WeaponManager>();
+    }
     private void Start()
     {
         experienceBar.UpdateExerienceSlider(experience, TO_LEVEL_UP);
         experienceBar.SetLevelText(level);
     }
+
+    internal void AddUpgradesIntoTheListOfAviableUpgrades(List<UpgradeData> upgradesAdd)
+    {
+        this.upgrades.AddRange(upgradesAdd);
+    }
+
     int TO_LEVEL_UP
     {
         get
@@ -30,6 +46,35 @@ public class Level : MonoBehaviour
         experienceBar.UpdateExerienceSlider(experience, TO_LEVEL_UP);
     }
 
+    internal void Upgrades(int selectedUpgradeID)
+    {
+        UpgradeData upgradeData = selectedUpgrades[selectedUpgradeID];
+
+        if(acquiredUpgrades == null)
+        {
+            acquiredUpgrades = new List<UpgradeData>();
+        }
+
+        switch (upgradeData.upgradeType)
+        {
+            case UpgradeType.WeaponUpgrade:
+                weaponManager.UpgradeWeapon(upgradeData);
+                break;
+            case UpgradeType.ItemUpgrade:
+                break;
+            case UpgradeType.WeaponUnlock:
+                weaponManager.AddWeapon(upgradeData.weaponData);
+                Debug.Log("Add Weapon");
+                break;
+            case UpgradeType.ItemUnlock:
+                break;
+        }
+
+        acquiredUpgrades.Add(upgradeData);
+
+        upgrades.Remove(upgradeData);
+    }
+
     public void CheckLevelUp()
     {
         if(experience >= TO_LEVEL_UP)
@@ -40,9 +85,34 @@ public class Level : MonoBehaviour
 
     private void LevelUp()
     {
-        upgradePanelManager.OpenPanel();
+        if(selectedUpgrades == null)
+        {
+            selectedUpgrades = new List<UpgradeData>();
+        }
+        selectedUpgrades.Clear();
+        selectedUpgrades.AddRange(GetUpgrades(4));
+
+        upgradePanelManager.OpenPanel(selectedUpgrades);
         experience -= TO_LEVEL_UP;
         level += 1;
         experienceBar.SetLevelText(level);
+    }
+
+    public List<UpgradeData> GetUpgrades(int count)
+    {
+        List<UpgradeData> upgradeList = new List<UpgradeData>();
+
+        if(count > upgrades.Count)
+        {
+            count = upgrades.Count;
+        }
+
+        for(int i = 0; i < count; i++)
+        {
+            upgradeList.Add(upgrades[Random.Range(0, upgrades.Count)]);
+        }
+        
+
+        return upgradeList;
     }
 }

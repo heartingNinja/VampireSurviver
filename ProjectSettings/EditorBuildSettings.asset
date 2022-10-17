@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayGameStage2.unity
     guid: 181884fdb40e46441bafb7ebb4200cf4
+  - enabled: 1
+    path: Assets/Dessert.unity
+    guid: 94161cde558430d4a8ea59f4ccba34c7
   m_configObjects: {}
