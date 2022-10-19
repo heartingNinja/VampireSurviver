@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour, IDamageble
 
 
     Rigidbody2D rgdb2d;
+    SpriteRenderer spriteRenderer; // my add
 
     [SerializeField] int hp = 999;
     [SerializeField] int damage = 1;
@@ -19,13 +20,19 @@ public class Enemy : MonoBehaviour, IDamageble
     private void Awake()
     {
         rgdb2d = GetComponent<Rigidbody2D>();
-       
+        spriteRenderer = GetComponent<SpriteRenderer>(); // my add
+
 
     }
 
     void Start()
     {
         targetCharacter = targetGameobject.gameObject.GetComponent<Character>();
+    }
+
+    void Update()
+    {
+
     }
 
     public void SetTarget(GameObject target)
@@ -41,6 +48,15 @@ public class Enemy : MonoBehaviour, IDamageble
     {
         Vector3 directin = (targetDestination.position - transform.position).normalized;
         rgdb2d.velocity = directin * speed;
+
+        if((targetDestination.position.x - transform.position.x) < 0) //my add to have enemy look at player correct
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        } // my add
     }
 
     private void OnCollisionStay2D(Collision2D collision)

@@ -15,7 +15,10 @@ MonoBehaviour:
   Name: ShotGun
   stats:
     damage: 100
-    timeToAttack: 1
+    timeToAttack: 2
     numberOfAttacks: 1
   weaponBasePrefab: {fileID: 1730571509463600135, guid: f6c0e88a256fd46489dec09ce2567b36, type: 3}
-  upgrades: []
+  upgrades:
+  - {fileID: 11400000, guid: a5bb21bc70dae5e4aa7fda61316b8f48, type: 2}
+  - {fileID: 11400000, guid: fe1f8c7b068cd6b4b93852f32ba990b8, type: 2}
+  - {fileID: 11400000, guid: aeca5638b32bdb940a2121ab84fd0904, type: 2}

@@ -149,9 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  hp: 4
-  damage: 1
-  experience_reward: 400
+  hp: 200
+  damage: 2
+  experience_reward: 20
 --- !u!95 &6748614676020124160
 Animator:
   serializedVersion: 4
@@ -184,5 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d09b1d6dce01648bf66b1f78f6db38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropItemPickUp: {fileID: 1227441801036602940, guid: 6b0f1369f0111424b8b684c4156bced1, type: 3}
-  chance: 0.15
+  dropItemPrefab:
+  - {fileID: 1227441801036602940, guid: 6b0f1369f0111424b8b684c4156bced1, type: 3}
+  - {fileID: 4072947757986808499, guid: 0353ff9a5edfdf945958184c92d7601c, type: 3}
+  chance: 0.55

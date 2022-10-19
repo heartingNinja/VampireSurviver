@@ -98,3 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  damage: 200
+  hitSize: 0.7

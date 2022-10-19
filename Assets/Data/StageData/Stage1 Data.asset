@@ -20,8 +20,8 @@ MonoBehaviour:
   - time: 10
     message: This is 10 secs
     enemyToSpawn: {fileID: 0}
-    count: 10
+    count: 7
   - time: 15
     message: this is goodbye
     enemyToSpawn: {fileID: 0}
-    count: 25
+    count: 17
