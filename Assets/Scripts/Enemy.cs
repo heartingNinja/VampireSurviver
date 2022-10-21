@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour, IDamageble
     Rigidbody2D rgdb2d;
     SpriteRenderer spriteRenderer; // my add
 
-    [SerializeField] int hp = 999;
+    [SerializeField] public int hp = 999;
     [SerializeField] int damage = 1;
     [SerializeField] int experience_reward = 400;
 

@@ -28,7 +28,7 @@ public class StageEvenManager : MonoBehaviour
           //  {
            //     rounds = 4;
           //  }
-            stageTime.time = -5; // my add 
+            stageTime.time = -10; // my add 
             eventIndexer = 0; // my add
             return;
         }

@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Skidmarks
+    uniqueID: 4245750331
+    locked: 0
+  - name: Player
+    uniqueID: 1156197429
+    locked: 0
+  - name: Particles
+    uniqueID: 1460810737
+    locked: 0
