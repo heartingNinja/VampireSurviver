@@ -6,6 +6,9 @@ using UnityEngine;
 public class WorldScrolling : MonoBehaviour
 {
     Transform playerTransform;
+   // Transform humanPlayerTransform; // My Add
+    Transform carPlayerTransform; // My Add
+    CarOrHumanManager CarOrHumanManager; // My Add
     Vector2Int currentTilePosition = new Vector2Int(0, 0);   
     [SerializeField] Vector2Int playerTitlePosition;
     Vector2Int onTileGridPlayerPositon;
@@ -30,10 +33,24 @@ public class WorldScrolling : MonoBehaviour
     {
         UpdateTilesOnScreen();
         playerTransform = GameManager.instance.playerTransform;
+        CarOrHumanManager = FindObjectOfType<CarOrHumanManager>();
     }
 
     private void Update()
     {
+
+        
+        if (CarOrHumanManager.isHuman) // my add
+        {
+            playerTransform = GameManager.instance.playerTransform;
+        }
+        else
+        {
+            carPlayerTransform = FindObjectOfType<TopDownCarController>().gameObject.transform; // my add
+            playerTransform = carPlayerTransform;
+
+        }// my add end
+
         playerTitlePosition.x = (int)(playerTransform.position.x / titleSize);
         playerTitlePosition.y = (int)(playerTransform.position.y / titleSize);
 

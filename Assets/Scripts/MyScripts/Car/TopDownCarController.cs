@@ -13,7 +13,7 @@ public class TopDownCarController : MonoBehaviour
     public float tireScreeningSideways = 4.0f;
 
     //Local variables
-    float accelerationInput = 0;
+    public float accelerationInput = 0; // my add to make public
     float steeringInput = 0;
 
     float rotationAngle = 0;
@@ -110,6 +110,11 @@ public class TopDownCarController : MonoBehaviour
         Vector2 rightVelocity = transform.right * Vector2.Dot(carRigidbody2D.velocity, transform.right);
 
         carRigidbody2D.velocity = forwardVelocity + rightVelocity * driftFactor;
+    }
+
+    public float GetVelocityMagnitude()
+    {
+        return carRigidbody2D.velocity.magnitude;
     }
 
     float GetLaterVelocity()

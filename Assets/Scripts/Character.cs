@@ -18,6 +18,9 @@ public class Character : MonoBehaviour
     private bool isDead;
 
     [SerializeField] StatusBar hpBar;
+   
+
+    
 
     private void Awake()
     {
@@ -28,6 +31,7 @@ public class Character : MonoBehaviour
     private void Start()
     {
         hpBar.SetState(currentHp, maxHP);
+        
     }
 
     private void Update()

@@ -1391,7 +1391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &377622969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1683,7 +1683,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1707,7 +1707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 10, z: -10}
+  m_LocalPosition: {x: 9.743334, y: 0.42865133, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3543,6 +3543,8 @@ GameObject:
   - component: {fileID: 1143603434}
   - component: {fileID: 1143603435}
   - component: {fileID: 1143603436}
+  - component: {fileID: 1143603437}
+  - component: {fileID: 1143603438}
   m_Layer: 0
   m_Name: --GameManager--
   m_TagString: Untagged
@@ -3623,6 +3625,37 @@ MonoBehaviour:
   - {fileID: 1065337797}
   - {fileID: 432028267}
   - {fileID: 954374696}
+--- !u!114 &1143603437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143603431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d976c1b5a67e2674397baa933a0aabfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHuman: 0
+  player: {fileID: 1276941470}
+  car: {fileID: 0}
+--- !u!114 &1143603438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143603431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9963cb5ebc4c840be1a63c81681701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experienceBar: {fileID: 959284133}
+  upgradePanelManager: {fileID: 1143603436}
+  upgrades: []
+  acquiredUpgrades: []
 --- !u!1 &1176502638
 GameObject:
   m_ObjectHideFlags: 0
@@ -3834,6 +3867,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1214392951}
   m_CullTransparentMesh: 1
+--- !u!1 &1276941470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4637408260362836160, guid: 219ad2e9403b42343b2424333bf88203, type: 3}
+  m_PrefabInstance: {fileID: 4637408261426832797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1281746949
 GameObject:
   m_ObjectHideFlags: 0
@@ -8168,7 +8206,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4637408260362836160, guid: 219ad2e9403b42343b2424333bf88203, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4637408260362836160, guid: 219ad2e9403b42343b2424333bf88203, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4637408260362836209, guid: 219ad2e9403b42343b2424333bf88203, type: 3}
       propertyPath: startingWeapon

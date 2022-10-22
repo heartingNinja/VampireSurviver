@@ -9,6 +9,11 @@ public class Enemy : MonoBehaviour, IDamageble
     Character targetCharacter;
     [SerializeField] float speed;
 
+    Level playerLevel;
+    CarOrHumanManager carOrHumanManager; // my add
+    GameObject carGameObject;//my add
+    
+
 
     Rigidbody2D rgdb2d;
     SpriteRenderer spriteRenderer; // my add
@@ -27,12 +32,16 @@ public class Enemy : MonoBehaviour, IDamageble
 
     void Start()
     {
-        targetCharacter = targetGameobject.gameObject.GetComponent<Character>();
+       
+       // targetCharacter = targetGameobject.gameObject.GetComponent<Character>();
+        carOrHumanManager = FindObjectOfType<CarOrHumanManager>(); // my add
+        playerLevel = FindObjectOfType<Level>(); // my add
+
     }
 
     void Update()
     {
-
+        targetCharacter = targetGameobject.gameObject.GetComponent<Character>(); // added to update from start
     }
 
     public void SetTarget(GameObject target)
@@ -86,7 +95,8 @@ public class Enemy : MonoBehaviour, IDamageble
 
         if(hp < 1)
         {
-            targetGameobject.GetComponent<Level>().AddExperience(experience_reward);
+            //targetGameobject.GetComponent<Level>().AddExperience(experience_reward);
+            playerLevel.AddExperience(experience_reward); //my change I had to make Level Script on Game Manager to get experience to add or enemy would not die
             GetComponent<DropOnDestroy>().CheckDrop();
             Destroy(gameObject);
         }

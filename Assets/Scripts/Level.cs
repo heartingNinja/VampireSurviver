@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
+    //This was on player I moved to GameManger
+
     int level = 1;
     int experience = 0;
     [SerializeField] ExperienceBar experienceBar;
@@ -18,7 +20,9 @@ public class Level : MonoBehaviour
 
     private void Awake()
     {
-        weaponManager = GetComponent<WeaponManager>();
+        // weaponManager = GetComponent<WeaponManager>(); 
+        //my change
+        weaponManager = FindObjectOfType<WeaponManager>();
     }
     private void Start()
     {

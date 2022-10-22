@@ -8,10 +8,11 @@ public abstract class WeaponBase : MonoBehaviour
     public WeaponData weaponData;
 
     public WeaponStats weaponStats;
-
+   
    
     float timer;
 
+    
     public void Update()
     {
         timer -= Time.deltaTime;
