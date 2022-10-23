@@ -36,7 +36,11 @@ public abstract class WeaponBase : MonoBehaviour
 
     public virtual void PostDamage(int damage, Vector3 targetPositoin)
     {
-        MessageSystem.instance.PostMessage(damage.ToString(), targetPositoin);
+        if(damage > 0) // my add
+        {
+            MessageSystem.instance.PostMessage(damage.ToString(), targetPositoin);
+        }
+       
     }
 
     public void Upgrade(UpgradeData upgradeData)

@@ -5,8 +5,18 @@ using UnityEngine;
 public class HealPickUpObject : MonoBehaviour, IPickUpObject
 {
     [SerializeField] int healAmount;
+    CarOrHumanManager carOrHumanManager; // my add
+
+    private void Start()
+    {
+        carOrHumanManager = FindObjectOfType<CarOrHumanManager>();
+    }
     public void OnPickUp(Character character)
     {
-        character.Heal(healAmount);
+        if(carOrHumanManager.isHuman)
+        {
+            character.Heal(healAmount);
+        }
+        
     }
 }

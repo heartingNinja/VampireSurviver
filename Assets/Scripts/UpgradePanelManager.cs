@@ -42,7 +42,8 @@ public class UpgradePanelManager : MonoBehaviour
 
     public void Upgrade(int pressedButtonID)
     {
-        GameManager.instance.playerTransform.GetComponent<Level>().Upgrades(pressedButtonID);
+       // GameManager.instance.playerTransform.GetComponent<Level>().Upgrades(pressedButtonID); // orginal
+        GameManager.instance.GetComponent<Level>().Upgrades(pressedButtonID); // my change
         ClosePanel();
     }
 

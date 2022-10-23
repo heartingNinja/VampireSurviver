@@ -26,13 +26,17 @@ public class CarDamage : WeaponBase
     private void HitDamageCar(Collider2D[] colliders)
     {
         int speed = (int) carRigidbody2D.velocity.magnitude;
+        int mass = (int) carRigidbody2D.mass;
+
+        int carDamgeFromSpeedandMass =( mass * speed * speed) / 1000;
+
         foreach (Collider2D enemyCollider in colliders)
         {
             IDamageble enemy = enemyCollider.GetComponent<IDamageble>();
             if (enemy != null)
             {
-                weaponBase.PostDamage(weaponStats.damage * speed, enemyCollider.transform.position);
-                enemy.TakeDamage(weaponStats.damage * speed);
+                weaponBase.PostDamage(weaponStats.damage * carDamgeFromSpeedandMass, enemyCollider.transform.position);
+                enemy.TakeDamage(weaponStats.damage * carDamgeFromSpeedandMass);
             }
         }
     }

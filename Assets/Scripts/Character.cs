@@ -18,6 +18,8 @@ public class Character : MonoBehaviour
     private bool isDead;
 
     [SerializeField] StatusBar hpBar;
+    CarOrHumanManager carOrHumanManager; //my add
+    
    
 
     
@@ -29,13 +31,16 @@ public class Character : MonoBehaviour
     }
 
     private void Start()
-    {
+    {      
+        carOrHumanManager = FindObjectOfType<CarOrHumanManager>();// my add
         hpBar.SetState(currentHp, maxHP);
         
     }
 
     private void Update()
     {
+        DeathOrCarDestroy();
+
         hpRegenerationTimer += Time.deltaTime * hpRegenerationRate;
 
         if(hpRegenerationTimer > 1f)
@@ -54,11 +59,12 @@ public class Character : MonoBehaviour
 
         currentHp -= damage;
 
-        if(currentHp <= 0)
-        {
-            GetComponent<CharacterGameOver>().GameOver();
-            isDead = true;
-        }
+      //  if(currentHp <= 0 ) 
+      //  {
+      //      GetComponent<CharacterGameOver>().GameOver();
+      //      isDead = true;
+      //  }
+       
         hpBar.SetState(currentHp, maxHP);
     }
 
@@ -86,5 +92,20 @@ public class Character : MonoBehaviour
          }
 
         hpBar.SetState(currentHp, maxHP);
+    }
+
+   public void DeathOrCarDestroy() //my test for death or car destroy
+    {
+        if (currentHp <= 0 && carOrHumanManager.isHuman) // && my add
+        {
+            GetComponent<CharacterGameOver>().GameOver();
+            isDead = true;
+        }
+
+        if (currentHp <= 0 && carOrHumanManager.isHuman == false) // my add if car is at 0 health
+        {
+            carOrHumanManager.isHuman = true;
+            
+        }
     }
 }

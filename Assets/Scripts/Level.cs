@@ -28,6 +28,8 @@ public class Level : MonoBehaviour
     {
         experienceBar.UpdateExerienceSlider(experience, TO_LEVEL_UP);
         experienceBar.SetLevelText(level);
+
+        
     }
 
     internal void AddUpgradesIntoTheListOfAviableUpgrades(List<UpgradeData> upgradesAdd)
