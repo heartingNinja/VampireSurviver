@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour, IDamageble
     Level playerLevel;
     CarOrHumanManager carOrHumanManager; // my add
     GameObject carGameObject;//my add
+    EnemiesAndKilled enemiesAndKilled; //my add
     
 
 
@@ -36,6 +37,7 @@ public class Enemy : MonoBehaviour, IDamageble
        // targetCharacter = targetGameobject.gameObject.GetComponent<Character>();
         carOrHumanManager = FindObjectOfType<CarOrHumanManager>(); // my add
         playerLevel = FindObjectOfType<Level>(); // my add
+        enemiesAndKilled = FindObjectOfType<EnemiesAndKilled>(); // my add
 
     }
 
@@ -98,6 +100,7 @@ public class Enemy : MonoBehaviour, IDamageble
             //targetGameobject.GetComponent<Level>().AddExperience(experience_reward);
             playerLevel.AddExperience(experience_reward); //my change I had to make Level Script on Game Manager to get experience to add or enemy would not die
             GetComponent<DropOnDestroy>().CheckDrop();
+            enemiesAndKilled.enemiesKilledNumber++; // my add
             Destroy(gameObject);
         }
     }

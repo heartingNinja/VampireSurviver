@@ -5982,6 +5982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ec9e99f45f7624d8ba8f6319db7dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMobile: 1
 --- !u!114 &3170678812784372163
 MonoBehaviour:
   m_ObjectHideFlags: 0
