@@ -320,7 +320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &31303367
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1220,7 +1220,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1101888864}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 5
+    OrthographicSize: 8
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -1581,7 +1581,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3558,6 +3558,7 @@ GameObject:
   - component: {fileID: 1143603443}
   - component: {fileID: 1143603444}
   - component: {fileID: 1143603445}
+  - component: {fileID: 1143603446}
   m_Layer: 0
   m_Name: --GameManager--
   m_TagString: Untagged
@@ -3673,6 +3674,8 @@ MonoBehaviour:
   upgradePanelManager: {fileID: 1143603436}
   upgrades: []
   acquiredUpgrades: []
+  upgradesAvailableOnStart:
+  - {fileID: 11400000, guid: a6ec7e8bf14a4ed43b41d275067191e0, type: 2}
 --- !u!114 &1143603439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3772,6 +3775,19 @@ MonoBehaviour:
   buildingUI: {fileID: 31303366}
   dataContainer: {fileID: 11400000, guid: 8fe4ae71cc0c1554d9331b35b76eeae5, type: 2}
   timeSinceLastChecked: 0
+--- !u!114 &1143603446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143603431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926785d9262049343aab0e1dc1c1e45f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
 --- !u!1 &1176502638
 GameObject:
   m_ObjectHideFlags: 0
@@ -7768,6 +7784,10 @@ PrefabInstance:
       propertyPath: startingWeapon
       value: 
       objectReference: {fileID: 11400000, guid: b0625ce314afbc242a198c4f77015a38, type: 2}
+    - target: {fileID: 4637408260362836212, guid: 219ad2e9403b42343b2424333bf88203, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4637408260362836213, guid: 219ad2e9403b42343b2424333bf88203, type: 3}
       propertyPath: data
       value: 
@@ -7852,4 +7872,5 @@ PrefabInstance:
     - {fileID: 4637408260362836220, guid: 219ad2e9403b42343b2424333bf88203, type: 3}
     - {fileID: 4637408260362836213, guid: 219ad2e9403b42343b2424333bf88203, type: 3}
     - {fileID: 4637408260362836209, guid: 219ad2e9403b42343b2424333bf88203, type: 3}
+    - {fileID: 4637408260362836212, guid: 219ad2e9403b42343b2424333bf88203, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 219ad2e9403b42343b2424333bf88203, type: 3}

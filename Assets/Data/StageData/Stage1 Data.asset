@@ -15,13 +15,13 @@ MonoBehaviour:
   stageEvenets:
   - time: 5
     message: Hello
-    enemyToSpawn: {fileID: 0}
+    enemyToSpawn: {fileID: 11400000, guid: a8d7efe7a22c19c45850ee3ff0bf4849, type: 2}
     count: 3
   - time: 10
     message: This is 10 secs
-    enemyToSpawn: {fileID: 0}
+    enemyToSpawn: {fileID: 11400000, guid: 02139256f98733b4b956304ffd837c93, type: 2}
     count: 5
   - time: 20
     message: this is goodbye
-    enemyToSpawn: {fileID: 0}
+    enemyToSpawn: {fileID: 11400000, guid: a8d7efe7a22c19c45850ee3ff0bf4849, type: 2}
     count: 15

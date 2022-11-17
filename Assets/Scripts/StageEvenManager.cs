@@ -40,7 +40,7 @@ public class StageEvenManager : MonoBehaviour
 
             for(int i = 0; i < stageData.stageEvenets[eventIndexer].count * rounds; i++) // added * rounds
             {
-                enemiesManger.SpawnEnemy();
+                enemiesManger.SpawnEnemy(stageData.stageEvenets[eventIndexer].enemyToSpawn);
             }
 
              

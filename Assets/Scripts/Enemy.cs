@@ -1,39 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
+[Serializable]
+public class EnemyStats
+{
+    public int hp = 999;
+    public int damage = 1;
+    public int experience_reward = 400;
+    public float Movespeed;
+   
+
+    public EnemyStats(EnemyStats stats)
+    {
+        this.hp = stats.hp;
+        this.damage = stats.damage;
+        this.experience_reward = stats.experience_reward;
+        this.Movespeed = stats.Movespeed;
+    }
+
+    internal void ApplyProgress(float progress)
+    {
+        this.hp = (int)(hp * progress);
+        this.damage = (int)(damage * progress);        
+    }
+}
 public class Enemy : MonoBehaviour, IDamageble
 {
     Transform targetDestination;
     GameObject targetGameobject;
     Character targetCharacter;
-    [SerializeField] float speed;
+    
 
     Level playerLevel;
     CarOrHumanManager carOrHumanManager; // my add
     GameObject carGameObject;//my add
     EnemiesAndKilled enemiesAndKilled; //my add
     
-
-
     Rigidbody2D rgdb2d;
-    SpriteRenderer spriteRenderer; // my add
+    public SpriteRenderer spriteRenderer; // my add
 
-    [SerializeField] public int hp = 999;
-    [SerializeField] int damage = 1;
-    [SerializeField] int experience_reward = 400;
+    public EnemyStats stats;
+
+   
 
     private void Awake()
     {
         rgdb2d = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>(); // my add
+        
 
 
     }
 
     void Start()
     {
-       
+       spriteRenderer = GetComponentInChildren<SpriteRenderer>(); // my add
        // targetCharacter = targetGameobject.gameObject.GetComponent<Character>();
         carOrHumanManager = FindObjectOfType<CarOrHumanManager>(); // my add
         playerLevel = FindObjectOfType<Level>(); // my add
@@ -43,7 +65,7 @@ public class Enemy : MonoBehaviour, IDamageble
 
     void Update()
     {
-        targetCharacter = targetGameobject.gameObject.GetComponent<Character>(); // added to update from start
+        targetCharacter = targetGameobject.gameObject.GetComponent<Character>(); // added to update from start, should have when bool changes for if car or human
     }
 
     public void SetTarget(GameObject target)
@@ -58,7 +80,7 @@ public class Enemy : MonoBehaviour, IDamageble
     private void FixedUpdate()
     {
         Vector3 directin = (targetDestination.position - transform.position).normalized;
-        rgdb2d.velocity = directin * speed;
+        rgdb2d.velocity = directin * stats.Movespeed;
 
         if((targetDestination.position.x - transform.position.x) < 0) //my add to have enemy look at player correct
         {
@@ -68,6 +90,16 @@ public class Enemy : MonoBehaviour, IDamageble
         {
             spriteRenderer.flipX = false;
         } // my add
+    }
+
+    internal void UpdateStatsForProgress(float progress)
+    {
+        stats.ApplyProgress(progress);
+    }
+
+    internal void SetStats(EnemyStats stats)
+    {
+        this.stats = new EnemyStats(stats);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -88,17 +120,17 @@ public class Enemy : MonoBehaviour, IDamageble
      //       targetCharacter = targetGameobject.GetComponent<Character>();
      //   }
 
-        targetCharacter.TakeDamage(damage);
+        targetCharacter.TakeDamage(stats.damage);
     }
 
     public void TakeDamage(int damage)
     {
-        hp -= damage;
+        stats.hp -= damage;
 
-        if(hp < 1)
+        if(stats.hp < 1)
         {
             //targetGameobject.GetComponent<Level>().AddExperience(experience_reward);
-            playerLevel.AddExperience(experience_reward); //my change I had to make Level Script on Game Manager to get experience to add or enemy would not die
+            playerLevel.AddExperience(stats.experience_reward); //my change I had to make Level Script on Game Manager to get experience to add or enemy would not die
             GetComponent<DropOnDestroy>().CheckDrop();
             enemiesAndKilled.enemiesKilledNumber++; // my add
             Destroy(gameObject);

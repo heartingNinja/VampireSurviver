@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemiesManger : MonoBehaviour
 {
+    [SerializeField] StageProgress stageProgress;
     [SerializeField] GameObject enemy;
+
     [SerializeField] Vector2 spawnArea;
     [SerializeField] float SpawnTimer;
     GameObject player;
@@ -46,7 +48,7 @@ public class EnemiesManger : MonoBehaviour
     } // all update my add
 
 
-    public void SpawnEnemy()
+    public void SpawnEnemy(EnemyData enemyToSpwan)
     {
         Vector3 position = GenerateRandomPosition();
 
@@ -61,10 +63,20 @@ public class EnemiesManger : MonoBehaviour
 
        // position += player.transform.position;
 
+        //spawning main enemy object
         GameObject newEnemy = Instantiate(enemy);
         newEnemy.transform.position = position;
-        newEnemy.GetComponent<Enemy>().SetTarget(player);
+        Enemy newEnemyComponent = newEnemy.GetComponent<Enemy>();
+        newEnemyComponent.SetTarget(player);
+        newEnemyComponent.SetStats(enemyToSpwan.stats);
+        newEnemyComponent.UpdateStatsForProgress(stageProgress.Progress);
+
         newEnemy.transform.parent = transform;
+
+        // spawning sprite object of enemy
+        GameObject spritObject = Instantiate(enemyToSpwan.animatedPrefab);
+        spritObject.transform.parent = newEnemy.transform;
+        spritObject.transform.localPosition = Vector3.zero;
     }
 
     private Vector3 GenerateRandomPosition()

@@ -17,23 +17,22 @@ public class Level : MonoBehaviour
     [SerializeField] List<UpgradeData> acquiredUpgrades;
 
     WeaponManager weaponManager;
+    PassiveItems passiveItems;
 
+    [SerializeField] List<UpgradeData> upgradesAvailableOnStart;
     private void Awake()
     {
         // weaponManager = GetComponent<WeaponManager>(); 
         //my change
-        weaponManager = FindObjectOfType<WeaponManager>();
+        weaponManager = GetComponent<WeaponManager>();
+        passiveItems = GetComponent<PassiveItems>();
     }
-    private void Start()
-    {
-        experienceBar.UpdateExerienceSlider(experience, TO_LEVEL_UP);
-        experienceBar.SetLevelText(level);
-
-        
-    }
-
     internal void AddUpgradesIntoTheListOfAviableUpgrades(List<UpgradeData> upgradesAdd)
     {
+        if (upgradesAdd == null)
+        {
+            return;
+        }
         this.upgrades.AddRange(upgradesAdd);
     }
 
@@ -45,6 +44,15 @@ public class Level : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        experienceBar.UpdateExerienceSlider(experience, TO_LEVEL_UP);
+        experienceBar.SetLevelText(level);
+        AddUpgradesIntoTheListOfAviableUpgrades(upgradesAvailableOnStart);
+        
+    }
+
+    
     public void AddExperience(int amount)
     {
         experience += amount;
@@ -67,12 +75,15 @@ public class Level : MonoBehaviour
                 weaponManager.UpgradeWeapon(upgradeData);
                 break;
             case UpgradeType.ItemUpgrade:
+                passiveItems.UpgradeItem(upgradeData);
                 break;
-            case UpgradeType.WeaponUnlock:
+            case UpgradeType.WeaponGet:
                 weaponManager.AddWeapon(upgradeData.weaponData);
                 Debug.Log("Add Weapon");
                 break;
-            case UpgradeType.ItemUnlock:
+            case UpgradeType.ItemGet:
+                passiveItems.Equip(upgradeData.item);
+                AddUpgradesIntoTheListOfAviableUpgrades(upgradeData.item.upgrades);
                 break;
         }
 

@@ -768,7 +768,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -49216965
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Time: 10
   m_Parameters:
@@ -5629,7 +5629,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1460810737
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -5748,7 +5748,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1156197429
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ec31f626a08f0f24786e6e56b54e0e08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10551,7 +10551,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1460810737
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -10751,7 +10751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData: {fileID: 0}
   weaponStats:
-    damage: 10
+    damage: 50
     timeToAttack: 0.5
     numberOfAttacks: 1
   carGameObjectTop: {fileID: 5415896550974768243}
@@ -10771,8 +10771,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a793b5204842a2e4aac8539c383de5e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 2000
-  currentHp: 2000
+  maxHP: 10000
+  currentHp: 10000
   armor: 0
   hpRegenerationRate: 0
   hpRegenerationTimer: 0
@@ -10878,7 +10878,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -49216965
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Time: 10
   m_Parameters:
